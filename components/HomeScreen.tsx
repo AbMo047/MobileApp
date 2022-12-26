@@ -4,14 +4,14 @@ import Constants from "expo-constants";
 import { Book } from "../books"
 
 interface HomeProps {
-  favorite:Book[],
-  setFavorite:(favorite:Book[])=>void
+  favorite: Book[],
+  setFavorite: (favorite: Book[]) => void
 }
 
-const HomeScreen = ({favorite,setFavorite}:HomeProps) => {
+const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
   const [books, setBooks] = useState<Book[]>([])
 
-   const apiCall = async (query: string) => {
+  const apiCall = async (query: string) => {
     const data = await fetch(`https://api.itbook.store/1.0/search/${query}`);
     const res = await data.json();
     const x: Book[] = await res.books;
@@ -21,7 +21,7 @@ const HomeScreen = ({favorite,setFavorite}:HomeProps) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View style={{ flex: 1, alignItems: "center", marginTop:0 }}>
+        <View style={{ flex: 1, alignItems: "center", marginTop: 0 }}>
           <TextInput style={{ height: 40, width: 250, borderColor: "gray", borderWidth: 1 }}
             onChangeText={text => setText(text)}
             value={text} />
@@ -31,7 +31,7 @@ const HomeScreen = ({favorite,setFavorite}:HomeProps) => {
               return <View style={styles.box} key={book.title}>
                 <Text>{book.title}</Text>
                 <Image style={{ width: 80, height: 80 }} source={{ uri: book.image }} />
-                <Pressable style={styles.button} onPress={()=>{
+                <Pressable style={styles.button} onPress={() => {
                   setFavorite(
                     [...favorite, book]
                   )
@@ -47,17 +47,17 @@ const HomeScreen = ({favorite,setFavorite}:HomeProps) => {
 }
 const styles = StyleSheet.create({
   container: {
-    flexDirection:"row",
+    flexDirection: "row",
     flex: 1,
     paddingTop: Constants.statusBarHeight,
     backgroundColor: "#fff",
-   
+
   },
   box: {
-    alignItems:"center",
+    alignItems: "center",
     width: 200,
     height: 200,
-    paddingTop:5,
+    paddingTop: 5,
     borderWidth: 1,
     borderColor: "black",
     borderRadius: 10

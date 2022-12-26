@@ -7,10 +7,12 @@ import { FontAwesome } from "@expo/vector-icons";
 import NewBooks from "./components/NewBooks";
 import {Book} from './books'
 import { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const App = () => {
   const Tab = createBottomTabNavigator();
   const [favorite, setFavorite] = useState<Book[]>([]);
+  
   return (
     <NavigationContainer>
       <Tab.Navigator>

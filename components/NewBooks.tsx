@@ -3,17 +3,13 @@ import { Book } from "../books";
 import Constants from "expo-constants";
 import React, { useEffect, useState } from "react";
 interface NewProps {
-    favorite:Book[],
-    setFavorite:(favorite:Book[])=>void
-  }
-  
+    favorite: Book[],
+    setFavorite: (favorite: Book[]) => void
+}
 
-const NewBooks = ({favorite,setFavorite}:NewProps) => {
 
-    const [booksCount, setBookscount] = useState(0);
+const NewBooks = ({ favorite, setFavorite }: NewProps) => {
     const [books, setBooks] = useState<Book[]>([])
-
-
     useEffect(() => {
         const apiCallNewBooks1 = async () => {
             const data = await fetch(`https://api.itbook.store/1.0/new`);
@@ -31,16 +27,16 @@ const NewBooks = ({favorite,setFavorite}:NewProps) => {
                 {
                     books.map(book => {
                         return <View style={styles.box} key={book.title}>
-                          <Text>{book.title}</Text>
-                          <Image style={{ width: 80, height: 80 }} source={{ uri: book.image }} />
-                          <Pressable style={styles.button} onPress={()=>{
-                            setFavorite(
-                              [...favorite, book]
-                            )
-                            Alert.alert("Toegevoegd aan jouw favorieten")
-                          }}></Pressable>
+                            <Text>{book.title}</Text>
+                            <Image style={{ width: 80, height: 80 }} source={{ uri: book.image }} />
+                            <Pressable style={styles.button} onPress={() => {
+                                setFavorite(
+                                    [...favorite, book]
+                                )
+                                Alert.alert("Toegevoegd aan jouw favorieten")
+                            }}></Pressable>
                         </View>
-                      })
+                    })
                 }
             </ScrollView>
 
@@ -62,7 +58,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "black",
         borderRadius: 10,
-        marginTop:25
+        marginTop: 25
     },
     button: {
         alignItems: 'center',
@@ -80,7 +76,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-      },
+    },
 
 });
 export default NewBooks;

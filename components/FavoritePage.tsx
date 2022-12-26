@@ -1,12 +1,20 @@
-import { View, Text, Image, Pressable, StyleSheet, Button } from "react-native";
+import { View, Text, Image, StyleSheet, Button, Alert } from "react-native";
 import Constants from "expo-constants";
 import { Book } from "../books";
+
 
 interface FavProps {
     favorite: Book[],
     setFavorite: (favorite: Book[]) => void
 }
 const Favorite = ({ favorite, setFavorite }: FavProps) => {
+
+    const removeFavorite = () => {
+        setFavorite([...favorite.filter((name,index)=> index.toString())]);
+        Alert.alert("Deleting...")
+        console.log(...favorite);
+    }
+
     return (
         <View style={styles.container}>
             {
@@ -15,7 +23,7 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
                         <Text>{book.title}</Text>
                         <Image style={{ width: 80, height: 80 }} source={{ uri: book.image }} />
                         <Button title="Remove" onPress={() => {
-                            setFavorite([...favorite.filter((book, index) => index.toString())])
+                            removeFavorite()
                         }}></Button>
                     </View>
                 })
@@ -27,7 +35,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         flex: 1,
-        alignItems:"center",
+        alignItems: "center",
         paddingTop: Constants.statusBarHeight,
         backgroundColor: "#fff",
 
