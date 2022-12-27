@@ -1,7 +1,8 @@
-import { View, Text, Image, StyleSheet, ScrollView, Pressable, Alert } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, Pressable, Alert, Button } from "react-native";
 import { Book } from "../books";
 import Constants from "expo-constants";
 import React, { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 interface NewProps {
     favorite: Book[],
     setFavorite: (favorite: Book[]) => void
@@ -20,7 +21,7 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
         apiCallNewBooks1()
     }, [])
 
-
+    const navigation : any = useNavigation();
     return (
         <View style={{ flex: 1, alignItems: "center", marginTop: 25, marginBottom: 25 }}>
             <ScrollView>
@@ -35,6 +36,7 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
                                 )
                                 Alert.alert("Toegevoegd aan jouw favorieten")
                             }}></Pressable>
+                            <Button title="Go to detail" onPress={(()=>navigation.navigate("Detail",{book:book}))}/>
                         </View>
                     })
                 }

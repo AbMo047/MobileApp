@@ -10,30 +10,26 @@ interface FavProps {
 }
 const Favorite = ({ favorite, setFavorite }: FavProps) => {
 
-    const removeFavorite = () => {
-        setFavorite([...favorite.filter((name,index)=> index.toString())]);
-        Alert.alert("Deleting...")
-        console.log(...favorite);
-    }
-
     const storeData = async () => {
         await AsyncStorage.setItem("favorite", JSON.stringify(favorite));
-      };
-      const getData = async () => {
-        const value : string | null = await AsyncStorage.getItem("favorite");
+    };
+
+    const getData = async () => {
+        const value: string | null = await AsyncStorage.getItem("favorite");
         if (value !== null) {
-          let x : Book[] = JSON.parse(value);
-          setFavorite(x)
+            let x: Book[] = JSON.parse(value);
+            setFavorite(x)
         } else {
-          alert("No Data found");
+            alert("No Data found");
         }
-      };
-      useEffect(()=>{
-          getData();
-      },[])
-      useEffect(()=>{
+    };
+
+    useEffect(() => {
+        getData();
+    }, [])
+    useEffect(() => {
         storeData();
-      },[favorite])
+    }, [favorite])
 
     return (
         <View style={styles.container}>
@@ -43,7 +39,7 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
                         <Text>{book.title}</Text>
                         <Image style={{ width: 80, height: 80 }} source={{ uri: book.image }} />
                         <Button title="Remove" onPress={() => {
-                            setFavorite(favorite.filter(item=>item.title!==book.title))
+                            setFavorite(favorite.filter(item => item.title !== book.title))
                         }}></Button>
                     </View>
                 })
