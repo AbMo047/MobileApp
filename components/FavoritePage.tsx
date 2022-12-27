@@ -1,7 +1,8 @@
 import { View, Text, Image, StyleSheet, Button, Alert } from "react-native";
 import Constants from "expo-constants";
 import { Book } from "../books";
-
+import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface FavProps {
     favorite: Book[],
@@ -15,6 +16,25 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
         console.log(...favorite);
     }
 
+    const storeData = async () => {
+        await AsyncStorage.setItem("favorite", JSON.stringify(favorite));
+      };
+      const getData = async () => {
+        const value : string | null = await AsyncStorage.getItem("favorite");
+        if (value !== null) {
+          let x : Book[] = JSON.parse(value);
+          setFavorite(x)
+        } else {
+          alert("No Data found");
+        }
+      };
+      useEffect(()=>{
+          getData();
+      },[])
+      useEffect(()=>{
+        storeData();
+      },[favorite])
+
     return (
         <View style={styles.container}>
             {
@@ -23,7 +43,7 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
                         <Text>{book.title}</Text>
                         <Image style={{ width: 80, height: 80 }} source={{ uri: book.image }} />
                         <Button title="Remove" onPress={() => {
-                            removeFavorite()
+                            setFavorite(favorite.filter(item=>item.title!==book.title))
                         }}></Button>
                     </View>
                 })
