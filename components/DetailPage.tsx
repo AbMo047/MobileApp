@@ -1,45 +1,33 @@
-import { View, Text, StyleSheet, Image } from "react-native";
-import react from 'react'
-import Constants from "expo-constants";
-const Detail = ({route}:any) => {
-    return (
+import { useNavigation } from "@react-navigation/native";
+import { View, Text, StyleSheet, Image, Linking, Button, Pressable } from "react-native";
+const Detail = ({ route }: any) => {
+  const navigation : any = useNavigation();
+  return (
 
-            <View style={styles.box}>
-                        <Text>{route.params.book.title}</Text>
-                        <Image style={{ width: 80, height: 80 }} source={{ uri: route.params.book.image }} />
-                        
-                    </View>
-    )
-    
+    <View style={styles.DetailContainer} >
+      <Pressable onPress={()=> navigation.navigate('Home')}><Text style={{marginTop:25}}>Go back home</Text></Pressable>
+      <Text style={{ textAlign: "center", marginTop:150,fontSize:25 }}>{route.params.book.title}</Text>
+      <Image style={{ width: 200, height: 400,justifyContent:'center', alignItems:"center", marginTop:10, marginLeft:"auto", marginRight:"auto" }} source={{ uri: route.params.book.image }} />
+      <Text style={styles.Text}>{route.params.book.subtitle}</Text>
+      <Text style={styles.Text}>{route.params.book.isbn13}</Text>
+      <Text style={styles.Text}>{route.params.book.price}</Text>
+      <Text style={styles.Text}
+      onPress={() => Linking.openURL(`${route.params.book.url}`)}>
+  Klik hier voor URL van de boek.
+</Text>
+    </View>
+  )
 }
 const styles = StyleSheet.create({
-    container: {
-      flexDirection: "row",
-      flex: 1,
-      paddingTop: Constants.statusBarHeight,
-      backgroundColor: "#fff",
-  
-    },
-    box: {
-      alignItems: "center",
-      width: 200,
-      height: 200,
-      paddingTop: 5,
-      borderWidth: 1,
-      borderColor: "black",
-      borderRadius: 10
-    },
-    button: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 32,
-      borderRadius: 4,
-      elevation: 3,
-      backgroundColor: 'black',
-    }
-  
-  });
+  DetailContainer : {
+    marginTop:25
+  },
+  Text:{
+    textAlign:"center",
+    fontSize:15,
+    marginTop:10
+  }
+});
 
 
 

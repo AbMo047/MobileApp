@@ -21,22 +21,25 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
         apiCallNewBooks1()
     }, [])
 
-    const navigation : any = useNavigation();
+    const navigation: any = useNavigation();
     return (
-        <View style={{ flex: 1, alignItems: "center", marginTop: 25, marginBottom: 25 }}>
+        <View style={{display:"flex", 
+        flexWrap:"wrap",
+        flexDirection:"row"}}>
             <ScrollView>
                 {
                     books.map(book => {
-                        return <View style={styles.box} key={book.title}>
-                            <Text>{book.title}</Text>
-                            <Image style={{ width: 80, height: 80 }} source={{ uri: book.image }} />
-                            <Pressable style={styles.button} onPress={() => {
+                        return <View style={styles.booksContainer} key={book.title}>
+                            <Pressable onPress={(() => navigation.navigate("Detail", { book: book }))}>
+                            <Text style={{ fontSize: 15, textAlign: "center", marginTop: 10 }}>{book.title}</Text>
+                            <Image style={{ width: 100, height: 130, alignItems: "center", margin: 22, marginTop: 1 }} source={{ uri: book.image }} />
+                            <Pressable style={{ borderWidth: 1, borderColor: "black", backgroundColor: "black", width: 100, margin: 22, marginTop: -25, borderRadius: 10 }} onPress={() => {
                                 setFavorite(
                                     [...favorite, book]
                                 )
                                 Alert.alert("Toegevoegd aan jouw favorieten")
-                            }}></Pressable>
-                            <Button title="Go to detail" onPress={(()=>navigation.navigate("Detail",{book:book}))}/>
+                            }}><Text style={{ textAlign: "center", fontSize: 10, color: "white", padding: 5 }}>Toevoegen aan je favorieten</Text></Pressable>
+                        </Pressable>
                         </View>
                     })
                 }
@@ -46,39 +49,15 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
     )
 }
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: "row",
-        flex: 1,
-        paddingTop: Constants.statusBarHeight,
-        backgroundColor: "#fff",
-
-    },
-    box: {
-        alignItems: "center",
-        width: 200,
-        height: 175,
+    booksContainer: {
+        marginTop:15,
+        backgroundColor: "red",
+        margin: 5,
         borderWidth: 1,
-        borderColor: "black",
-        borderRadius: 10,
-        marginTop: 25
-    },
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        elevation: 3,
-        backgroundColor: 'black',
-        color: "white"
-    },
-    text: {
-        fontSize: 8,
-        lineHeight: 0,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'white',
-    },
+        width: 150,
+        height: 250,
+        
+    }
 
 });
 export default NewBooks;
