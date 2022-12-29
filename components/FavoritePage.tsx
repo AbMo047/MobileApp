@@ -33,10 +33,15 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
     }, [favorite])
 
     return (
-        <View style={{display:"flex", 
-        flexWrap:"wrap",
-        flexDirection:"row"}}>
+        <View>
             <ScrollView>
+                <View style={{  display: "flex",
+        
+        flex: 1,
+        flexWrap: "wrap",
+        flexDirection: "row",
+        }}>
+
                 {
                     favorite.map(book => {
                         return <View style={styles.booksContainer} key={book.title}>
@@ -51,6 +56,7 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
                         </View>
                     })
                 }
+                 </View>
             </ScrollView>
 
         </View>
@@ -59,12 +65,12 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
 const styles = StyleSheet.create({
     
     booksContainer: {
-        marginTop:15,
-        backgroundColor: "red",
-        margin: 5,
-        borderWidth: 1,
+        justifyContent:"center",
+        borderColor:"grey",
         width: 150,
-        height: 250,
+        height: 260,
+        padding: 5,
+        margin: 20,
         
     }
 });

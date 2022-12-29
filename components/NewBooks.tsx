@@ -23,10 +23,14 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
 
     const navigation: any = useNavigation();
     return (
-        <View style={{display:"flex", 
-        flexWrap:"wrap",
-        flexDirection:"row"}}>
+        <View>
             <ScrollView>
+                <View  style={{  display: "flex",
+        backgroundColor: "yellow",
+        flex: 1,
+        flexWrap: "wrap",
+        flexDirection: "row",
+        }}>
                 {
                     books.map(book => {
                         return <View style={styles.booksContainer} key={book.title}>
@@ -43,6 +47,7 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
                         </View>
                     })
                 }
+                </View>
             </ScrollView>
 
         </View>
@@ -50,12 +55,12 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
 }
 const styles = StyleSheet.create({
     booksContainer: {
-        marginTop:15,
+        justifyContent:"center",
         backgroundColor: "red",
-        margin: 5,
-        borderWidth: 1,
         width: 150,
-        height: 250,
+        height: 260,
+        padding: 5,
+        margin: 20,
         
     }
 

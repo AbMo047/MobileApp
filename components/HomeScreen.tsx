@@ -97,7 +97,6 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
                     style={{
                       width: 137,
                       height: 160,
-                      
                       alignItems: "center",
                       justifyContent:"center"
                     }}
