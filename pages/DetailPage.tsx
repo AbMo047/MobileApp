@@ -11,13 +11,13 @@ const Detail = ({ route }: any) => {
     <View style={styles.DetailContainer} >
       <ScrollView>
       <Pressable onPress={()=> navigation.navigate('Home')}><Text style={{marginTop:25}}><AntDesign name="arrowleft" size={24}/></Text></Pressable>
-      <Card>
+      <Card style={{marginTop:40, height:650}}>
         <View style={styles.DetailContent}>
         <Card.Title title={route.params.book.title}   />
     <Card.Content>
-      <Paragraph>{route.params.book.subtitle}</Paragraph>
-      <Paragraph>{route.params.book.isbn13}</Paragraph>
-      <Paragraph>{route.params.book.price}</Paragraph>
+      <Paragraph>Subtitle : {route.params.book.subtitle}</Paragraph>
+      <Paragraph>Isbn13 : {route.params.book.isbn13}</Paragraph>
+      <Paragraph>Price : {route.params.book.price}</Paragraph>
     </Card.Content>
     <Image style={{ width: 350, height: 400, alignItems: "center", margin: 22, marginTop: 1 }} source={{ uri: route.params.book.image }}  />
     <Button onPress={() => Linking.openURL(`${route.params.book.url}`)} style={{backgroundColor:"black"}}> 

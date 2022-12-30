@@ -88,7 +88,7 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
                   onPress={() => navigation.navigate("Detail", { book: book })}
                 >
                   <Card>
-                    <Card.Title title={book.title} style={{ flex: 1 }} />
+                    <Card.Title title={book.title} style={{ flex: 1, alignContent:"center",alignItems:"center",alignSelf:"center" }} />
                     <Card.Content>
                       <Image
                         style={{
