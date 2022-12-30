@@ -1,6 +1,5 @@
 import { View, Text, Image, StyleSheet, ScrollView, Pressable, Alert} from "react-native";
 import { Book } from "../books";
-import Constants from "expo-constants";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -57,11 +56,16 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
                       setFavorite([...favorite, book]);
                       Alert.alert(" Added to your favorite");
                     }}
-                    style={{justifyContent: "center",
-                    alignItems: "center",}}
+                    style={{
+                        borderColor:"black",
+                        borderWidth:2,
+                        width:150,
+                        marginTop:0,
+                        alignSelf:"center",               
+                      }}
                     >
                        Add to your favorite
-                      <MaterialIcons name="add-box" size={16} color="black" /> 
+                      <MaterialIcons name="add-box" size={16} color="black"/> 
                     </Button>
                   </Card></Pressable>
                         </View>

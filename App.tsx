@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import DetailPage from "./components/DetailPage";
+import DetailPage from "./pages/DetailPage";
 import TabNav from "./components/TabNav";
 
 const Stack = createNativeStackNavigator();

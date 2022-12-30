@@ -8,7 +8,6 @@ import {
   Pressable,
   Linking,
 } from "react-native";
-import Constants from "expo-constants";
 import { Book } from "../books";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -82,6 +81,13 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
                           favorite.filter((item) => item.title !== book.title)
                         );
                         Alert.alert("Deleted from your favorite");
+                      }}
+                      style={{
+                        borderColor:"black",
+                        borderWidth:2,
+                        width:150,
+                        marginTop:0,
+                        alignSelf:"center",               
                       }}
                     >
                       Delete

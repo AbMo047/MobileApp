@@ -9,10 +9,8 @@ import {
   Alert,
   Pressable,
 } from "react-native";
-import Constants from "expo-constants";
 import { Book } from "../books";
 import { useNavigation } from "@react-navigation/native";
-import { wrap } from "module";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Card, Button } from "react-native-paper";
 
@@ -110,14 +108,16 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
                         Alert.alert(" Added to your favorite");
                       }}
                       style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: "black",
-                        
+                        borderColor:"black",
+                        borderWidth:2,
+                        width:150,
+                        marginTop:0,
+                        alignSelf:"center",               
                       }}
+                      
                     >
                       Add to your favorite
-                      <MaterialIcons name="add-box" size={16} color="white" />
+                      <MaterialIcons name="add-box" size={16} color="black" />
                     </Button>
                   </Card>
                 </Pressable>

@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
-import HomeScreen from "./HomeScreen";
-import NewBooks from "./NewBooks";
-import Favorite from "./FavoritePage";
+import HomeScreen from "../pages/HomeScreen";
+import NewBooks from "../pages/NewBooks";
+import Favorite from "../pages/FavoritePage";
 import { Book } from "../books";
 
 

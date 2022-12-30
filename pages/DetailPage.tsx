@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, Image, Linking, Pressable, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Button, Card, Paragraph } from 'react-native-paper';
 
 const Detail = ({ route }: any) => {
   const navigation : any = useNavigation();
