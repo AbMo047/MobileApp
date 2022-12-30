@@ -28,10 +28,10 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
         <View>
             <ScrollView>
                 <View  style={{  display: "flex",
-        backgroundColor: "white",
         flex: 1,
         flexWrap: "wrap",
         flexDirection: "row",
+        justifyContent: "center",
         }}>
                 {
                     books.map(book => {
@@ -55,12 +55,12 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
                     <Button
                      onPress={() => {
                       setFavorite([...favorite, book]);
-                      Alert.alert("Toegevoegd aan jouw favorieten");
+                      Alert.alert(" Added to your favorite");
                     }}
                     style={{justifyContent: "center",
                     alignItems: "center",}}
                     >
-                      Toevoegen  
+                       Add to your favorite
                       <MaterialIcons name="add-box" size={16} color="black" /> 
                     </Button>
                   </Card></Pressable>

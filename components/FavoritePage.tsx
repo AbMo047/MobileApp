@@ -49,11 +49,10 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
         <View
           style={{
             display: "flex",
-
             flex: 1,
             flexWrap: "wrap",
             flexDirection: "row",
-            backgroundColor: "white",
+            justifyContent: "center",
           }}
         >
           {favorite.map((book, key) => {
@@ -82,10 +81,10 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
                         setFavorite(
                           favorite.filter((item) => item.title !== book.title)
                         );
-                        Alert.alert("Verwijderd uit je favorieten");
+                        Alert.alert("Deleted from your favorite");
                       }}
                     >
-                      verwijderen
+                      Delete
                       <MaterialIcons name="delete" size={16} color="black" /> 
                     </Button>
                   </Card>

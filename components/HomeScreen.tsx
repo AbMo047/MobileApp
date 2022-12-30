@@ -77,10 +77,10 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
         <View
           style={{
             display: "flex",
-            backgroundColor: "white",
             flex: 1,
             flexWrap: "wrap",
             flexDirection: "row",
+            justifyContent: "center",
           }}
         >
           {books.map((book) => {
@@ -90,7 +90,7 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
                   onPress={() => navigation.navigate("Detail", { book: book })}
                 >
                   <Card>
-                    <Card.Title  title={book.title} style={{flex:1}}/>
+                    <Card.Title title={book.title} style={{ flex: 1 }} />
                     <Card.Content>
                       <Image
                         style={{
@@ -105,15 +105,19 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
                     </Card.Content>
 
                     <Button
-                     onPress={() => {
-                      setFavorite([...favorite, book]);
-                      Alert.alert("Toegevoegd aan jouw favorieten");
-                    }}
-                    style={{justifyContent: "center",
-                    alignItems: "center",}}
+                      onPress={() => {
+                        setFavorite([...favorite, book]);
+                        Alert.alert(" Added to your favorite");
+                      }}
+                      style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: "black",
+                        
+                      }}
                     >
-                      Toevoegen  
-                      <MaterialIcons name="add-box" size={16} color="black" /> 
+                      Add to your favorite
+                      <MaterialIcons name="add-box" size={16} color="white" />
                     </Button>
                   </Card>
                 </Pressable>
@@ -134,7 +138,6 @@ const styles = StyleSheet.create({
     height: 260,
     padding: 5,
     margin: 20,
-   
   },
 });
 export default HomeScreen;

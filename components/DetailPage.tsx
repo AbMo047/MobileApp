@@ -20,8 +20,8 @@ const Detail = ({ route }: any) => {
       <Paragraph>{route.params.book.price}</Paragraph>
     </Card.Content>
     <Image style={{ width: 350, height: 400, alignItems: "center", margin: 22, marginTop: 1 }} source={{ uri: route.params.book.image }}  />
-    <Button onPress={() => Linking.openURL(`${route.params.book.url}`)}> 
-  Klik hier voor URL<AntDesign name="link" size={24} color="black"/> van de boek.
+    <Button onPress={() => Linking.openURL(`${route.params.book.url}`)} style={{backgroundColor:"black"}}> 
+  Press for the <AntDesign name="link" size={20} color="white"/> of this book.
 </Button>
         </View>
   </Card>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     marginTop:10
   },
   DetailContent:{
-    
+    margin:40,
     alignItems: "center",
     justifyContent:"center"
 
