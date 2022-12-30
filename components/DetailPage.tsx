@@ -1,34 +1,53 @@
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, StyleSheet, Image, Linking, Button, Pressable, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, Linking, Pressable, ScrollView } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+
 const Detail = ({ route }: any) => {
   const navigation : any = useNavigation();
+ 
   return (
 
     <View style={styles.DetailContainer} >
       <ScrollView>
-      <Pressable onPress={()=> navigation.navigate('Home')}><Text style={{marginTop:25}}>Go back home</Text></Pressable>
-      <Text style={{ textAlign: "center", marginTop:50,fontSize:25 }}>{route.params.book.title}</Text>
-      <Image style={{ width: 200, height: 400,justifyContent:'center', alignItems:"center", marginTop:10, marginLeft:"auto", marginRight:"auto" }} source={{ uri: route.params.book.image }} />
-      <Text style={styles.Text}>{route.params.book.subtitle}</Text>
-      <Text style={styles.Text}>{route.params.book.isbn13}</Text>
-      <Text style={styles.Text}>{route.params.book.price}</Text>
-      <Text style={styles.Text}
-      onPress={() => Linking.openURL(`${route.params.book.url}`)}>
-  Klik hier voor URL van de boek.
-</Text>
+      <Pressable onPress={()=> navigation.navigate('Home')}><Text style={{marginTop:25}}><AntDesign name="arrowleft" size={24}/></Text></Pressable>
+      <Card>
+        <View style={styles.DetailContent}>
+        <Card.Title title={route.params.book.title}   />
+    <Card.Content>
+      <Paragraph>{route.params.book.subtitle}</Paragraph>
+      <Paragraph>{route.params.book.isbn13}</Paragraph>
+      <Paragraph>{route.params.book.price}</Paragraph>
+    </Card.Content>
+    <Image style={{ width: 350, height: 400, alignItems: "center", margin: 22, marginTop: 1 }} source={{ uri: route.params.book.image }}  />
+    <Button onPress={() => Linking.openURL(`${route.params.book.url}`)}> 
+  Klik hier voor URL<AntDesign name="link" size={24} color="black"/> van de boek.
+</Button>
+        </View>
+  </Card>
+      
 </ScrollView>
     </View>
   )
 }
 const styles = StyleSheet.create({
   DetailContainer : {
-    marginTop:25
+    marginTop:25,
+    padding: 20
+    
   },
   Text:{
     textAlign:"center",
     fontSize:15,
     marginTop:10
-  }
+  },
+  DetailContent:{
+    
+    alignItems: "center",
+    justifyContent:"center"
+
+  },
+  
 });
 
 

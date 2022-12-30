@@ -26,7 +26,7 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
         <View>
             <ScrollView>
                 <View  style={{  display: "flex",
-        backgroundColor: "yellow",
+        backgroundColor: "white",
         flex: 1,
         flexWrap: "wrap",
         flexDirection: "row",
@@ -56,7 +56,8 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
 const styles = StyleSheet.create({
     booksContainer: {
         justifyContent:"center",
-        backgroundColor: "red",
+        backgroundColor: "grey",
+        borderRadius:10,
         width: 150,
         height: 260,
         padding: 5,

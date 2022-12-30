@@ -14,6 +14,7 @@ import Constants from "expo-constants";
 import { Book } from "../books";
 import { useNavigation } from "@react-navigation/native";
 import { wrap } from "module";
+import { AntDesign } from "@expo/vector-icons";
 
 interface HomeProps {
   favorite: Book[];
@@ -34,7 +35,7 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
     <View>
       <ScrollView>
         <Text style={{ textAlign: "center", fontSize: 25, marginTop: 15 }}>
-          Search a book :
+          Search for a book :
         </Text>
         <TextInput
           onChangeText={(text) => setText(text)}
@@ -70,13 +71,13 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
             }}
             onPress={() => apiCall(text)}
           >
-            Search
+            Search <AntDesign name="search1" size={24} color="white" />
           </Text>
         </Pressable>
         <View
           style={{
             display: "flex",
-            backgroundColor: "yellow",
+            backgroundColor: "white",
             flex: 1,
             flexWrap: "wrap",
             flexDirection: "row",
@@ -139,7 +140,8 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
 const styles = StyleSheet.create({
   booksContainer: {
     justifyContent:"center",
-    backgroundColor: "red",
+    backgroundColor: "grey",
+    borderRadius:10,
     width: 150,
     height: 260,
     padding: 5,
