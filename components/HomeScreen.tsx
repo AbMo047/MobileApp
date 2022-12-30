@@ -5,7 +5,6 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   ScrollView,
   Alert,
   Pressable,
@@ -14,7 +13,8 @@ import Constants from "expo-constants";
 import { Book } from "../books";
 import { useNavigation } from "@react-navigation/native";
 import { wrap } from "module";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { Card, Button } from "react-native-paper";
 
 interface HomeProps {
   favorite: Book[];
@@ -89,45 +89,33 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
                 <Pressable
                   onPress={() => navigation.navigate("Detail", { book: book })}
                 >
-                  <Text
-                    style={{ fontSize: 10, textAlign: "center", marginTop: 10 }}
-                  >
-                    {book.title}
-                  </Text>
-                  <Image
-                    style={{
-                      width: 137,
-                      height: 160,
-                      alignItems: "center",
-                      justifyContent:"center"
-                    }}
-                    source={{ uri: book.image }}
-                  />
-                  <Pressable
-                    style={{
-                      borderWidth: 1,
-                      borderColor: "black",
-                      backgroundColor: "black",
-                      width: 140,
-                      borderRadius: 10,
-                      marginBottom: 3,
-                    }}
-                    onPress={() => {
+                  <Card>
+                    <Card.Title  title={book.title} style={{flex:1}}/>
+                    <Card.Content>
+                      <Image
+                        style={{
+                          width: 100,
+                          height: 130,
+                          alignItems: "center",
+                          margin: 22,
+                          marginTop: 1,
+                        }}
+                        source={{ uri: book.image }}
+                      />
+                    </Card.Content>
+
+                    <Button
+                     onPress={() => {
                       setFavorite([...favorite, book]);
                       Alert.alert("Toegevoegd aan jouw favorieten");
                     }}
-                  >
-                    <Text
-                      style={{
-                        textAlign: "center",
-                        fontSize: 15,
-                        color: "white",
-                        padding: 5,
-                      }}
+                    style={{justifyContent: "center",
+                    alignItems: "center",}}
                     >
-                      Toevoegen aan je favorieten
-                    </Text>
-                  </Pressable>
+                      Toevoegen  
+                      <MaterialIcons name="add-box" size={16} color="black" /> 
+                    </Button>
+                  </Card>
                 </Pressable>
               </View>
             );
@@ -139,9 +127,9 @@ const HomeScreen = ({ favorite, setFavorite }: HomeProps) => {
 };
 const styles = StyleSheet.create({
   booksContainer: {
-    justifyContent:"center",
-    backgroundColor: "grey",
-    borderRadius:10,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
     width: 150,
     height: 260,
     padding: 5,

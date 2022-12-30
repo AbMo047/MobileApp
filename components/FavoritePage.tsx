@@ -13,7 +13,7 @@ import { Book } from "../books";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from '@expo/vector-icons'; 
 import { Card, Button } from "react-native-paper";
 
 interface FavProps {
@@ -56,14 +56,14 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
             backgroundColor: "white",
           }}
         >
-          {favorite.map((book) => {
+          {favorite.map((book, key) => {
             return (
-              <View style={styles.booksContainer} key={book.title}>
+              <View style={styles.booksContainer} key={book.url}>
                 <Pressable
                   onPress={() => navigation.navigate("Detail", { book: book })}
                 >
                   <Card>
-                    <Card.Title title={book.title} />
+                    <Card.Title  title={book.title} style={{flex:1}}/>
                     <Card.Content>
                       <Image
                         style={{
@@ -86,7 +86,7 @@ const Favorite = ({ favorite, setFavorite }: FavProps) => {
                       }}
                     >
                       verwijderen
-                      <AntDesign name="delete" size={16} color="black" /> 
+                      <MaterialIcons name="delete" size={16} color="black" /> 
                     </Button>
                   </Card>
                 </Pressable>

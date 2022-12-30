@@ -1,8 +1,10 @@
-import { View, Text, Image, StyleSheet, ScrollView, Pressable, Alert, Button } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, Pressable, Alert} from "react-native";
 import { Book } from "../books";
 import Constants from "expo-constants";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Card, Button  } from "react-native-paper";
 interface NewProps {
     favorite: Book[],
     setFavorite: (favorite: Book[]) => void
@@ -35,15 +37,33 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
                     books.map(book => {
                         return <View style={styles.booksContainer} key={book.title}>
                             <Pressable onPress={(() => navigation.navigate("Detail", { book: book }))}>
-                            <Text style={{ fontSize: 15, textAlign: "center", marginTop: 10 }}>{book.title}</Text>
-                            <Image style={{ width: 100, height: 130, alignItems: "center", margin: 22, marginTop: 1 }} source={{ uri: book.image }} />
-                            <Pressable style={{ borderWidth: 1, borderColor: "black", backgroundColor: "black", width: 100, margin: 22, marginTop: -25, borderRadius: 10 }} onPress={() => {
-                                setFavorite(
-                                    [...favorite, book]
-                                )
-                                Alert.alert("Toegevoegd aan jouw favorieten")
-                            }}><Text style={{ textAlign: "center", fontSize: 10, color: "white", padding: 5 }}>Toevoegen aan je favorieten</Text></Pressable>
-                        </Pressable>
+                            <Card>
+                    <Card.Title  title={book.title} style={{flex:1}}/>
+                    <Card.Content>
+                      <Image
+                        style={{
+                          width: 100,
+                          height: 130,
+                          alignItems: "center",
+                          margin: 22,
+                          marginTop: 1,
+                        }}
+                        source={{ uri: book.image }}
+                      />
+                    </Card.Content>
+
+                    <Button
+                     onPress={() => {
+                      setFavorite([...favorite, book]);
+                      Alert.alert("Toegevoegd aan jouw favorieten");
+                    }}
+                    style={{justifyContent: "center",
+                    alignItems: "center",}}
+                    >
+                      Toevoegen  
+                      <MaterialIcons name="add-box" size={16} color="black" /> 
+                    </Button>
+                  </Card></Pressable>
                         </View>
                     })
                 }
@@ -55,9 +75,9 @@ const NewBooks = ({ favorite, setFavorite }: NewProps) => {
 }
 const styles = StyleSheet.create({
     booksContainer: {
-        justifyContent:"center",
-        backgroundColor: "grey",
-        borderRadius:10,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
         width: 150,
         height: 260,
         padding: 5,
